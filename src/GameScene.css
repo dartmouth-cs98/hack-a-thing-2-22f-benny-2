@@ -28,13 +28,15 @@ button {
   border-radius: 10px;
   border: 0;
   cursor: pointer;
+  margin-bottom: 1em;
 }
 
 p {
   color: #0081a7;
 }
 h1 {
-  color: #0081a7;
+  color: white;
+  letter-spacing: .1em;
 }
 
 h2 {
