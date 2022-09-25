@@ -35,8 +35,8 @@ export default function GameMaker() {
         window.location.reload(false);
     }
     return(
-<div className="App">
-      <header className="App-header">
+        <div className="App">
+            <header className="App-header">
             {
                 currLevel && 
                     <GameScene

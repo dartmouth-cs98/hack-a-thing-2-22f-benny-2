@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import GameMaker from './GameMaker';
+import ViewGames from './ViewGames'
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path:'/playGame',
     element: <GameMaker/>
+  },
+  {
+    path:'/viewGames',
+    element: <ViewGames/>
   }
 ]);
 
