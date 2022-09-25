@@ -6,7 +6,7 @@ import WinScreen from './WinScreen';
 
 
 const Game1 = ({
-  keyRef, targets, nums, limit, solution
+  keyRef, tag, targets, nums, limit, solution, goToNextLevelReload
 }) => {
   const [count, setCount] = useState(targets[0]);
   const [doneTarget, setDone] = useState(1);
@@ -34,22 +34,21 @@ const Game1 = ({
   const dbRef = ref(database);
 
   const readDatabase = () => {
-    get(child(dbRef, keyRef)).then((snapshot) => {
+    get(child(dbRef, keyRef + '/' + tag)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val())
         setComplete(true)
         setTime(snapshot.val().time)
         setHints(snapshot.val().hints)
-        get(child(dbRef, 'users/best')).then((time) => {
-          console.log(time.val())
-          setBestTime(time.val())
-        })
+        // get(child(dbRef, 'users/best')).then((time) => {
+        //   console.log(time.val())
+        //   setBestTime(time.val())
+        // })
       } else {
         console.log("No data available");
       }
     }).catch((error) => {
-      console.log('huh')
-      // console.error(error);
+      console.error(error);
     });
   }
   // Timer code sourced from https://w3collective.com/react-stopwatch/
@@ -72,22 +71,22 @@ const Game1 = ({
   
   // write to database
   const writeToDataBase = (currTime, hints, solution) => {
-    set(ref(database, keyRef), {
+    set(ref(database, keyRef + '/' + tag), {
       time: currTime,
       hints: hints,
       solution: solution
     });
 
     // check best time and update it if current time is shorter
-    get(child(dbRef, 'users/best')).then((snapshot) => {
-      if (snapshot.exists()) {
-        if (currTime < snapshot.val())
-          set(ref(database, 'users/best'), currTime);
-          setBestTime(currTime)
-      } else {
-        console.log("No data available");
-      }
-    })
+    // get(child(dbRef, 'users/best')).then((snapshot) => {
+    //   if (snapshot.exists()) {
+    //     if (currTime < snapshot.val())
+    //       set(ref(database, 'users/best'), currTime);
+    //       setBestTime(currTime)
+    //   } else {
+    //     console.log("No data available");
+    //   }
+    // })
   }
   
 
@@ -252,7 +251,7 @@ const Game1 = ({
             </h2>
           ))}
         </div>
-        { complete ? <WinScreen time={time} hints={hintNum} best={bestTime}/> : null}
+        { complete ? <WinScreen time={time} hints={hintNum} best={bestTime} goToNextLevelReload={goToNextLevelReload}/> : null}
         <div className="operations">
           {nums.map((num) => (
             <button className="operation" type="button" onClick={() => pressOperation(num)}>{num}</button>
