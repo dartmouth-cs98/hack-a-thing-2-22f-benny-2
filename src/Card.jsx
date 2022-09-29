@@ -8,7 +8,7 @@ export default function Card({
         <div className='card-container'>
             <h2>{tag}</h2>
             <h3>Your time: {time.toString().slice(0, -3)}.{time.toString().slice(1, -2)} secs</h3>
-            {/* <h2>Best time: {best.toString().slice(0, -3)}.{best.toString().slice(1, -2)} seconds</h2> */}
+            <h3>Best time: {best.toString().slice(0, -3)}.{best.toString().slice(1, -2)} secs</h3>
         </div>
     )
 }

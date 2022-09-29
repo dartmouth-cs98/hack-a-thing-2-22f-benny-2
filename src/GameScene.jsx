@@ -78,15 +78,15 @@ const Game1 = ({
     });
 
     // check best time and update it if current time is shorter
-    // get(child(dbRef, 'users/best')).then((snapshot) => {
-    //   if (snapshot.exists()) {
-    //     if (currTime < snapshot.val())
-    //       set(ref(database, 'users/best'), currTime);
-    //       setBestTime(currTime)
-    //   } else {
-    //     console.log("No data available");
-    //   }
-    // })
+    get(child(dbRef, 'best/' + tag)).then((snapshot) => {
+      if (snapshot.exists()) {
+        if (currTime < snapshot.val())
+          set(ref(database, 'best/' + tag), currTime);
+          setBestTime(currTime)
+      } else {
+        set(ref(database, 'best/' + tag), currTime);
+      }
+    })
   }
   
 
