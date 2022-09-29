@@ -36,7 +36,7 @@ function App() {
 
       }
     })
-  }, [dbRef, keyRef]);
+  });
 
   const submitName = (name) => {
     set(ref(database, keyRef + '/name'), name);

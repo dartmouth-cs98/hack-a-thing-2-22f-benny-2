@@ -9,7 +9,8 @@ export default function GameMaker() {
 
     useEffect(() => {
         goToNextLevel()
-    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function getRandomLevel(levels){
         const stage =  1 + Math.floor(Math.random() * (levels));
