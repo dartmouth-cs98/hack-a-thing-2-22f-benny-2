@@ -34,16 +34,12 @@ const Game1 = ({
   const dbRef = ref(database);
 
   const readDatabase = () => {
-    get(child(dbRef, keyRef + '/' + tag)).then((snapshot) => {
+    get(child(dbRef, 'users/' + keyRef + '/' + tag)).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val())
         setComplete(true)
         setTime(snapshot.val().time)
         setHints(snapshot.val().hints)
-        // get(child(dbRef, 'users/best')).then((time) => {
-        //   console.log(time.val())
-        //   setBestTime(time.val())
-        // })
       } else {
         console.log("No data available");
       }
@@ -71,7 +67,7 @@ const Game1 = ({
   
   // write to database
   const writeToDataBase = (currTime, hints, solution) => {
-    set(ref(database, keyRef + '/' + tag), {
+    set(ref(database, 'users/' + keyRef + '/' + tag), {
       time: currTime,
       hints: hints,
       solution: solution
@@ -81,10 +77,10 @@ const Game1 = ({
     get(child(dbRef, 'best/' + tag)).then((snapshot) => {
       if (snapshot.exists()) {
         if (currTime < snapshot.val())
-          set(ref(database, 'best/' + tag), currTime);
+          set(ref(database, 'best/' + tag), keyRef);
           setBestTime(currTime)
       } else {
-        set(ref(database, 'best/' + tag), currTime);
+        set(ref(database, 'best/' + tag), keyRef);
       }
     })
   }

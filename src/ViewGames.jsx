@@ -69,7 +69,7 @@ export default function ViewGames() {
                             <Card
                                 key = {index}
                                 tag = {key}
-                                best = {bestTimes[key]}
+                                keyRef = {bestTimes[key]}
                                 hint = {currObjects[key].hint}
                                 time = {currObjects[key].time}
                             />

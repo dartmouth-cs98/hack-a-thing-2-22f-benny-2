@@ -5,8 +5,7 @@ import GameScene from './GameScene';
 export default function GameMaker() {
     const [currLevel, setCurrLevel] = useState(null);
     const [currCount, setCurrCount] = useState(0);
-    const num = localStorage.getItem('num') || Math.floor(Math.random()*999999);
-    const ref = 'users/' + num.toString()
+    const ref = localStorage.getItem('num') || Math.floor(Math.random()*999999);
 
     useEffect(() => {
         goToNextLevel()
@@ -18,14 +17,12 @@ export default function GameMaker() {
     }
 
     function goToNextLevel() {
-        // 
+        // Go to other level
         setCurrCount(currCount + 1)
-        const levelNum = getRandomLevel(2)
+        const levelNum = getRandomLevel(49)
 
-        console.log(levelNum)
         const level = levels[levelNum]
 
-        console.log(level)
         setCurrLevel(level)
 
     }
@@ -40,7 +37,7 @@ export default function GameMaker() {
             {
                 currLevel && 
                     <GameScene
-                        keyRef={ref}
+                        keyRef={ref.toString()}
                         tag={currLevel.tag}
                         targets={currLevel.targets}
                         nums={currLevel.operators}
