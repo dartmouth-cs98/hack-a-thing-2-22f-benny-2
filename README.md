@@ -2,7 +2,12 @@
 
 ## What you built?
 
+Hacktivity1:
 I built a web app of a game I created awhile ago. It's a number game where you have to get three numbers using three operations. That part of the code was pre written. So for my actually project, I wanted to do something similar to wordle, where it would use a cookie to store how many seconds and how many hints used on a device. I had to create a timer system to keep track of a user's time as they're solving the puzzle. Additionally, I added a database that saved this data in real time, using the cookie number as a unique user. The database is written into after completing the level and it keeps track of the best time. This time is then displayed at the end of every user session. I finally hosted all of this on netlify so that anyone can use it.
+
+Hacktivity2:
+I completely gamified the web app. Before, it only had one level that was playable, but now has over 50. You can choose to go to another randonm level after completing another. The main new feature of the app is viewing the times of your past games. You can do this by clicking 'View Past Games.' Here, you will see all the times you had and the best times by all the other competitors. 
+
 
 Include some screenshots.
 [How?](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
