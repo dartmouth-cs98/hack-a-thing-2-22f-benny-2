@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, child, get } from "firebase/database";
+import { getDatabase, ref, child, get } from "firebase/database";
 
 import './Card.css';
 
@@ -12,7 +12,7 @@ export default function Card({
 
     useEffect(() => {
         readDatabase()
-    }, []);
+    });
 
     const readDatabase = () => {
       // Get user times

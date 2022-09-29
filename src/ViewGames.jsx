@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, child, get } from "firebase/database";
+import { getDatabase, ref, child, get } from "firebase/database";
 import './ViewGames.css'
 
 export default function ViewGames() {
@@ -14,7 +14,7 @@ export default function ViewGames() {
 
     useEffect(() => {
         readDatabase()
-    }, []);
+    });
 
     const readDatabase = () => {
 

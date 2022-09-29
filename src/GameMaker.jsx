@@ -9,7 +9,7 @@ export default function GameMaker() {
 
     useEffect(() => {
         goToNextLevel()
-    }, []);
+    });
 
     function getRandomLevel(levels){
         const stage =  1 + Math.floor(Math.random() * (levels));

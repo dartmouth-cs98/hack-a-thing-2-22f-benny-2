@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import levels from './levels';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, child, get } from "firebase/database";
 import './App.css';
@@ -37,7 +36,7 @@ function App() {
 
       }
     })
-  }, []);
+  }, [dbRef, keyRef]);
 
   const submitName = (name) => {
     set(ref(database, keyRef + '/name'), name);
